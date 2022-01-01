@@ -1,0 +1,61 @@
+--- 
+# $ sudo chgrp -R tomcat /opt/tomcat
+- name: Give the tomcat group ownership over the entire installation directory
+  file: 
+    path: /opt/tomcat
+    recurse: yes
+    group: tomcat 
+    state: directory 
+
+# $ sudo chmod -R g+r conf
+- name: Give the tomcat group read access to the conf directory
+  file: 
+    path: /opt/tomcat/conf
+    recurse: yes
+    mode: g+r
+    state: directory
+
+# $ sudo chmod g+x conf
+- name: Give the tomcat group execute access to the conf directory
+  file:
+    path: /opt/tomcat/conf
+    recurse: yes
+    mode: g+x
+    state: directory
+
+# Make the tomcat user the owner of the webapps, work, temp, and logs directories:
+# $ sudo chown -R tomcat webapps/ work/ temp/ logs/
+
+# webapps
+- name: Make the tomcat user the owner of the webapps
+  file:
+    path: /opt/tomcat/webapps
+    owner: tomcat
+    state: directory
+
+# work
+- name: Make the tomcat user the owner of the work
+  file:
+    path: /opt/tomcat/work
+    owner: tomcat
+    state: directory
+
+# temp
+- name: Make the tomcat user the owner of the temp
+  file:
+    path: /opt/tomcat/temp
+    owner: tomcat
+    state: directory
+
+# logs
+- name: Make the tomcat user the owner of the logs 
+  file:
+    path: /opt/tomcat/logs 
+    owner: tomcat
+    state: directory
+
+
+
+
+
+

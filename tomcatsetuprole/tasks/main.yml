@@ -1,2 +1,12 @@
 ---
-# tasks file for tomcatsetuprole
+- include_tasks: installjava.yml
+- include_tasks: createtomuser.yml
+- include_tasks: installtomcat.yml
+- include_tasks: updatepermissions.yml
+- include_tasks: createservicefile.yml
+- include_tasks: tomstart.yml
+- include_tasks: tomwebmanage.yml
+- include_tasks: tomrestart.yml
+
+
+

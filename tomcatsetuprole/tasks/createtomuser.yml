@@ -1,0 +1,16 @@
+--- 
+- name: create a new tomcat group
+  group:
+    name: tomcat
+    state: present
+
+# create a new tomcat user. We’ll make this user a member of the tomcat group, 
+# with a home directory of /opt/tomcat (where we will install Tomcat), 
+# and with a shell of /bin/false (so nobody can log into the account)
+- name: create a new tomcat user
+  user: 
+    name: tomcat
+    shell: /bin/false
+    group: tomcat
+    home: /opt/tomcat
+    state: present 
